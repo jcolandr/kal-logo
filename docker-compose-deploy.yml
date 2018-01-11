@@ -2,10 +2,10 @@ version: '3.1'
 services:
     web:
         image: ${DTR_URL}/dev/dlogo:${TAG}
+        deploy:
+            labels:
+                com.docker.ucp.mesh.http.80: "external_route=http://dlogo.jcolandr.dtcntr.net,internal_port=80"
         ports:
             - 5021:80
-        delpoy:
-            labels:
-              - "com.docker.ucp.mesh.http.80=internal_port=80,external_route=http://dlogo.jcolandr.dtcntr.net"
         networks:
             - ucp-hrm
