@@ -4,7 +4,8 @@ services:
         image: ${DTR_URL}/dev/dlogo:${TAG}
         ports:
             - 5021:80
-        labels:
-            - "com.docker.ucp.mesh.http.80=internal_port=80,external_route=http://dlogo.jcolandr.dtcntr.net"
+        delpoy:
+            labels:
+              - "com.docker.ucp.mesh.http.80=internal_port=80,external_route=http://dlogo.jcolandr.dtcntr.net"
         networks:
             - ucp-hrm
