@@ -1,7 +1,5 @@
 FROM alpine:3.7 
 
-LABEL maintainer="shaker242@gmail.com"
-
 RUN apk update && apk upgrade && apk add nginx \
 	&& mkdir -p /var/lib/nginx/html/img /run/nginx
 
