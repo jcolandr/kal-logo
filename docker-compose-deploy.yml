@@ -15,4 +15,3 @@ services:
 
 networks:
     docker_demo:
-      external: true
