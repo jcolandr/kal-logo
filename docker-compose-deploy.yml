@@ -9,8 +9,8 @@ services:
         ports:
             - 5021:80
         networks:
-            - ucp-hrm
+            - docker_demo
 
 networks:
-    ucp-hrm:
+    docker_demo:
         external: true
