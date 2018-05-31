@@ -1,0 +1,16 @@
+version: '3.1'
+
+services:
+    web:
+        image: dtr.jcolandr.dtcntr.net/demo/docker-demo:latest
+        deploy:
+            labels:
+                com.docker.ucp.mesh.http.80: "external_route=http://dlogo-prod.jcolandr.dtcntr.net,internal_port=80"
+        ports:
+            - 5022:80
+        networks:
+            - ucp-hrm
+
+networks:
+    ucp-hrm:
+        external: true
