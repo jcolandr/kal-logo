@@ -2,7 +2,7 @@ version: '3.1'
 
 services:
     web:
-        image: ${DTR_URL}/prod/dlogo:stable
+        image: ${DTR_URL}/prod/dlogo:latest
         deploy:
             labels:
                 com.docker.ucp.mesh.http.80: "external_route=http://dlogo.jcolandr.dtcntr.net,internal_port=80"
