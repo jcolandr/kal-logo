@@ -1,4 +1,4 @@
-FROM alpine:3.7 
+FROM dtr.jcolandr.dtcntr.net/official/alpine:latest
 
 RUN apk update && apk upgrade && apk add nginx \
 	&& mkdir -p /var/lib/nginx/html/img /run/nginx
@@ -11,4 +11,4 @@ COPY /img/*.png /var/lib/nginx/html/img/
 
 EXPOSE 80
 
-CMD ["nginx"] 
+CMD ["nginx"]
