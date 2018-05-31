@@ -1,11 +1,13 @@
-version: '3.1'
+version: '3.3'
 
 services:
-    web:
+    wed:
         image: ${DTR_URL}/demo/docker-demo:latest
         deploy:
             labels:
-                com.docker.ucp.mesh.http.80: "external_route=http://dlogo.jcolandr.dtcntr.net,internal_port=80"
+              - "com.docker.lb.hosts=docker-demo.jcolandr.dtcntr.net"
+              - "com.docker.lb.port=80"
+              - "com.docker.lb.network=docker_demo"
         ports:
             - 5021:80
         networks:
@@ -13,3 +15,4 @@ services:
 
 networks:
     docker_demo:
+      external: true
