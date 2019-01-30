@@ -1,0 +1,56 @@
+apiVersion: v1
+kind: Namespace
+metadata:
+  name: dlogo-jcolandr
+---
+apiVersion: apps/v1beta2
+kind: Deployment
+metadata:
+  name: dlogo
+  namespace: dlogo-jcolandr
+spec:
+  replicas: 4
+  selector:
+    matchLabels:
+      app: dlogo
+  template:
+    metadata:
+      labels:
+        app: dlogo
+    spec:
+      containers:
+        - name: dlogo
+          image: ${DOCKER_REGISTRY_HOSTNAME}/${DOCKER_IMAGE_NAMESPACE_PROD}/${DOCKER_IMAGE_REPOSITORY}:${DOCKER_IMAGE_TAG}
+          imagePullPolicy: Always
+          ports:
+            - containerPort: 80
+      nodeSelector:
+        beta.kubernetes.io/os: linux
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: dlogo
+  namespace: dlogo-jcolandr
+spec:
+  selector:
+    app: dlogo
+  ports:
+  - protocol: TCP
+    port: 80
+    targetPort: 80
+---
+apiVersion: extensions/v1beta1
+kind: Ingress
+metadata:
+  namespace: dlogo-jcolandr
+  name: dlogo-jcolandr-ingress
+spec:
+  rules:
+  - host: dlogo.kube.west.us.se.dckr.org
+    http:
+      paths:
+      - path: /
+        backend:
+          serviceName: dlogo
+          servicePort: 80
