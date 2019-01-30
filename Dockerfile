@@ -1,4 +1,4 @@
-FROM dtr.jcolandr.dtcntr.net/official/alpine:latest
+FROM alpine:latest
 
 RUN apk update && apk upgrade && apk add nginx \
 	&& mkdir -p /var/lib/nginx/html/img /run/nginx
