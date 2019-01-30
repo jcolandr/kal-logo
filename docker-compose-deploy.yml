@@ -1,8 +1,8 @@
 version: '3.3'
 
 services:
-    web:
-        image: ${DTR_URL}/demo/docker-demo:latest
+    dlogo:
+        image: ${DOCKER_REGISTRY_HOSTNAME}/${DOCKER_IMAGE_NAMESPACE_PROD}/${DOCKER_IMAGE_REPOSITORY}:${DOCKER_IMAGE_TAG}
         deploy:
           mode: replicated
           replicas: 4
