@@ -99,7 +99,7 @@ node {
                "DOCKER_IMAGE_NAMESPACE_PROD=${env.DOCKER_IMAGE_NAMESPACE_PROD}",
                "DOCKER_IMAGE_REPOSITORY=${env.DOCKER_IMAGE_REPOSITORY}"]) {
         withDockerServer([credentialsId: env.DOCKER_UCP_CREDENTIALS_ID, uri: env.DOCKER_UCP_URI]) {
-            sh "docker stack deploy -c docker-compose-deploy.yml ${env.DOCKER_SERVICE_NAME} && kubectl version && kubectl apply -f k8s-deployment.yml" 
+            sh "docker stack deploy -c docker-compose-deploy.yml ${env.DOCKER_SERVICE_NAME}" 
         }
       }
     }
