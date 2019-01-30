@@ -20,7 +20,7 @@ node {
         required_env.each { required ->
             if(env[required] == null) {
                 fail = 1
-                echo "Missing required environment variable: '${required}'" 
+                echo "Missing required environment variable: '${required}'"
             }
         }
 
@@ -94,9 +94,13 @@ node {
     }
 
     stage('Deploy') {
+      withEnv(["DOCKER_IMAGE_TAG=${DOCKER_IMAGE_TAG}",
+               "DOCKER_REGISTRY_HOSTNAME=${env.DOCKER_REGISTRY_HOSTNAME}",
+               "DOCKER_IMAGE_NAMESPACE_PROD=${env.DOCKER_IMAGE_NAMESPACE_PROD}",
+               "DOCKER_IMAGE_REPOSITORY=${env.DOCKER_IMAGE_REPOSITORY}"]) {
         withDockerServer([credentialsId: env.DOCKER_UCP_CREDENTIALS_ID, uri: env.DOCKER_UCP_URI]) {
-            sh "docker service update --image ${env.DOCKER_REGISTRY_HOSTNAME}/${env.DOCKER_IMAGE_NAMESPACE_PROD}/${env.DOCKER_IMAGE_REPOSITORY}:${DOCKER_IMAGE_TAG} ${env.DOCKER_SERVICE_NAME}" 
+            sh "docker stack deploy -c docker-compose-deploy.yml ${env.DOCKER_SERVICE_NAME}"
         }
+      }
     }
 }
-

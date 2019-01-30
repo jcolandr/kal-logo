@@ -4,14 +4,8 @@ services:
     web:
         image: ${DTR_URL}/demo/docker-demo:latest
         deploy:
-            labels:
-              - "com.docker.lb.hosts=docker-demo.jcolandr.dtcntr.net"
-              - "com.docker.lb.port=80"
-              - "com.docker.lb.network=docker_demo"
-        #ports:
-        #    - 5021:80
-        networks:
-            - docker_demo
-
-networks:
-    docker_demo:
+          mode: replicated
+          replicas: 4
+          labels:
+            - "com.docker.lb.hosts=dlogo.west.us.se.dckr.org"
+            - "com.docker.lb.port=80"
