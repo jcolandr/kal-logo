@@ -20,7 +20,7 @@ spec:
     spec:
       containers:
         - name: dlogo
-          image: ${DOCKER_REGISTRY_HOSTNAME}/${DOCKER_IMAGE_NAMESPACE_PROD}/${DOCKER_IMAGE_REPOSITORY}:${DOCKER_IMAGE_TAG}
+          image: dtr.west.us.se.dckr.org/demo/dlogo:2019.01.29.193122-jc
           imagePullPolicy: Always
           ports:
             - containerPort: 80
