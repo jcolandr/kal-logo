@@ -1,13 +1,9 @@
-apiVersion: v1
-kind: Namespace
-metadata:
-  name: dlogo-jcolandr
 ---
 apiVersion: apps/v1beta2
 kind: Deployment
 metadata:
   name: dlogo
-  namespace: dlogo-jcolandr
+  namespace: se-joecolandro
 spec:
   replicas: 4
   selector:
@@ -31,7 +27,7 @@ apiVersion: v1
 kind: Service
 metadata:
   name: dlogo
-  namespace: dlogo-jcolandr
+  namespace: se-joecolandro
 spec:
   selector:
     app: dlogo
@@ -43,7 +39,7 @@ spec:
 apiVersion: extensions/v1beta1
 kind: Ingress
 metadata:
-  namespace: dlogo-jcolandr
+  namespace: se-joecolandro
   name: dlogo-jcolandr-ingress
 spec:
   rules:
