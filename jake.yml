@@ -1,0 +1,11 @@
+version: '3.3'
+
+services:
+    dlogo:
+        image: dtr.west.us.se.dckr.org/demo-dev/dlogo:2019.02.07.074321-jc
+        deploy:
+          mode: replicated
+          replicas: 4
+          labels:
+            - "com.docker.lb.hosts=jake.west.us.se.dckr.org"
+            - "com.docker.lb.port=80"
