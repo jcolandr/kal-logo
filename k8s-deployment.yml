@@ -16,7 +16,7 @@ spec:
     spec:
       containers:
         - name: dlogo
-          image: dtr.west.us.se.dckr.org/demo/dlogo:2019.04.12.072642-jc
+          image: dtr.west.us.se.dckr.org/demo/dlogo:2019.04.12.085422-jc
           imagePullPolicy: Always
           ports:
             - containerPort: 80
