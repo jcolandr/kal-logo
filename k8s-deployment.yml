@@ -16,7 +16,7 @@ spec:
     spec:
       containers:
         - name: dlogo
-          image: dtr.west.us.se.dckr.org/demo/dlogo:2019.08.13.184502-jc
+          image: dtr.west.us.se.dckr.org/demo/dlogo:2019.08.29.184554-jc
           ports:
             - containerPort: 80
       nodeSelector:
